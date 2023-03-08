@@ -1,5 +1,7 @@
 package room.escape.frame;
 
-public class ServiceFrame {
-    
+import java.util.List;
+
+public interface ServiceFrame<K, V> {
+    public List<V> get() throws Exception;
 }

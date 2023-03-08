@@ -8,7 +8,7 @@ import lombok.*;
 @Getter
 @Setter
 public class Genre {
-    private int genre;
+    private int genre_code;
     private String gname;
 
 }

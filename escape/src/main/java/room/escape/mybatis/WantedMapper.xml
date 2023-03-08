@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="room.escape.mapper.WantedMapper">
+    
+    <insert id="insert" parameterType="Wanted">
+        INSERT INTO WANTED
+        VALUES (0, #{user_code}, #{theme_code}, #{title}, #{posting}, now(), now(), #{reserved_time})
+    </insert>
+    <delete id="delete" parameterType="Integer">
+        DELETE FROM WANTED WHERE wanted_code=#{wanted_code}
+    </delete>
+    <update id="update" parameterType="Wanted">
+        UPDATE WANTED SET title=#{title}, posting=#{posting} WHERE wanted_code=#{wanted_code}
+    </update>
+    <select id="select" parameterType="Integer" resultType="Wanted">
+        SELECT * FROM WANTED WHERE wanted_code=#{wanted_code}
+    </select>
+    <select id="selectAll" resultType="Wanted">
+        SELECT * FROM WANTED;
+    </select>
+
+</mapper>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="room.escape.mapper.GenreMapper">
+    
+    <insert id="insert" parameterType="Genre">
+        INSERT INTO GENRE
+        VALUES (0, #{gname})
+    </insert>
+    <delete id="delete" parameterType="Integer">
+        DELETE FROM GENRE WHERE genre_code=#{genre_code}
+    </delete>
+    <update id="update" parameterType="Genre">
+        UPDATE GENRE SET gname=#{gname} WHERE genre_code=#{genre_code}
+    </update>
+    <select id="select" parameterType="Integer" resultType="Genre">
+        SELECT * FROM GENRE WHERE genre_code=#{genre_code}
+    </select>
+    <select id="selectAll" resultType="Genre">
+        SELECT * FROM GENRE;
+    </select>
+
+</mapper>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="room.escape.mapper.QnaMapper">
+    
+    <insert id="insert" parameterType="Qna">
+        INSERT INTO QnA
+        VALUES (0, #{user_code}, #{store_code}, #{title}, #{posting}, null)
+    </insert>
+    <delete id="delete" parameterType="Integer">
+        DELETE FROM QnA WHERE qna_code=#{qna_code}
+    </delete>
+    <update id="update" parameterType="Qna">
+        UPDATE QnA SET title=#{title}, posting=#{posting} WHERE qna_code=#{qna_code}
+    </update>
+    <select id="select" parameterType="Integer" resultType="Qna">
+        SELECT * FROM QnA WHERE qna_code=#{qna_code}
+    </select>
+    <select id="selectAll" resultType="Qna">
+        SELECT * FROM QnA;
+    </select>
+
+</mapper>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="room.escape.mapper.ReviewMapper">
+    
+    <insert id="insert" parameterType="Review">
+        INSERT INTO REVIEW
+        VALUES (0, #{user_code}, #{theme_code}, #{title}, #{posting}, #{interior}, #{story}, #{reviewlevel}, now(), #{success}, #{hintcount}, #{cleartime}, now())
+    </insert>
+    <delete id="delete" parameterType="Integer">
+        DELETE FROM REVIEW WHERE review_code=#{review_code}
+    </delete>
+    <update id="update" parameterType="Review">
+        UPDATE REVIEW SET title=#{title}, posting=#{posting} WHERE review_code=#{review_code}
+    </update>
+    <select id="select" parameterType="Integer" resultType="Review">
+        SELECT * FROM REVIEW WHERE review_code=#{review_code}
+    </select>
+    <select id="selectAll" resultType="Review">
+        SELECT * FROM REVIEW;
+    </select>
+
+</mapper>

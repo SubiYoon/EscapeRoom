@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="room.escape.mapper.SwapMapper">
+    
+    <insert id="insert" parameterType="Swap">
+        INSERT INTO SWAP
+        VALUES (0, #{user_code}, #{theme_code}, now(), #{reserved_time})
+    </insert>
+    <delete id="delete" parameterType="Integer">
+        DELETE FROM SWAP WHERE swap_code=#{swap_code}
+    </delete>
+    <update id="update" parameterType="Swap">
+        UPDATE SWAP SET reserved_time=#{reserved_time} WHERE swap_code=#{swap_code}
+    </update>
+    <select id="select" parameterType="Integer" resultType="Swap">
+        SELECT * FROM SWAP WHERE swap_code=#{swap_code}
+    </select>
+    <select id="selectAll" resultType="Swap">
+        SELECT * FROM SWAP;
+    </select>
+
+</mapper>

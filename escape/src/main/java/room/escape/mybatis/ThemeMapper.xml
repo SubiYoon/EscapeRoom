@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="room.escape.mapper.ThemeMapper">
+    
+    <insert id="insert" parameterType="Theme">
+        INSERT INTO THEME
+        VALUES (0, #{store_code}, #{genre_code}, #{tname}, #{themetime}, #{posting}, #{number_people}, #{themelevel}, #{device}, #{activity})
+    </insert>
+    <delete id="delete" parameterType="Integer">
+        DELETE FROM THEME WHERE theme_code=#{theme_code}
+    </delete>
+    <update id="update" parameterType="Theme">
+        UPDATE THEME SET tname=#{tname} WHERE theme_code=#{theme_code}
+    </update>
+    <select id="select" parameterType="Integer" resultType="Theme">
+        SELECT * FROM THEME WHERE theme_code=#{theme_code}
+    </select>
+    <select id="selectAll" resultType="Theme">
+        SELECT * FROM THEME;
+    </select>
+
+</mapper>

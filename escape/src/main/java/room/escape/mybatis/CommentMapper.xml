@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="room.escape.mapper.CommentMapper">
+    
+    <insert id="insert" parameterType="Comment">
+        INSERT INTO COMMENT
+        VALUES (0, #{comment_code2}, #{user_code}, #{wanted_code}, #{comment}, now())
+    </insert>
+    <delete id="delete" parameterType="Integer">
+        DELETE FROM COMMENT WHERE comment_code=#{comment_code}
+    </delete>
+    <update id="update" parameterType="Comment">
+        UPDATE COMMENT SET comment=#{comment} WHERE comment_code=#{comment_code}
+    </update>
+    <select id="select" parameterType="Integer" resultType="Comment">
+        SELECT * FROM COMMENT WHERE comment_code=#{comment_code}
+    </select>
+    <select id="selectAll" resultType="Comment">
+        SELECT * FROM COMMENT;
+    </select>
+
+</mapper>

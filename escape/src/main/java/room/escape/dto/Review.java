@@ -10,7 +10,7 @@ import lombok.*;
 @Getter
 @Setter
 public class Review {
-    private int reviewe_code;
+    private int review_code;
     private int user_code;
     private int theme_code;
     private String title;

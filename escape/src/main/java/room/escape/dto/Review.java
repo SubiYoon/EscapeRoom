@@ -17,7 +17,7 @@ public class Review {
     private String posting;
     private int interior;
     private int story;
-    private int level;
+    private int reviewlevel;
     private Date playdate;
     private int success;
     private int hintcount;

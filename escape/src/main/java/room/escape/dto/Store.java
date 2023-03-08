@@ -10,7 +10,7 @@ import lombok.*;
 public class Store {
     private int store_code;
     private int admin_code;
-    private String name;
+    private String sname;
     private String phone;
     private String address;
     private String homepage;

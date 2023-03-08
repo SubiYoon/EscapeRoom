@@ -11,10 +11,11 @@ public class Theme {
     private int theme_code;
     private int store_code;
     private int genre_code;
-    private int time;
+    private String tname;
+    private int themetime;
     private String posting;
     private int number_people;
-    private int level;
+    private int themelevel;
     private String device;
     private String activity;
     

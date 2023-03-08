@@ -10,10 +10,9 @@ import lombok.*;
 @Getter
 @Setter
 public class Wanted {
-    private int wantetd_code;
+    private int wanted_code;
     private int user_code;
     private int theme_code;
-    private int comment_code;
     private String title;
     private String posting;
     private Date writedate;

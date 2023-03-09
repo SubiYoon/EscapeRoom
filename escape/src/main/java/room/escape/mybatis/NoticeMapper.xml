@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="room.escape.mapper.NoticeMapper">
+    
+    <insert id="insert" parameterType="Notice">
+        INSERT INTO NOTICE
+        VALUES (0, #{store_code}, #{title}, #{posting}, now())
+    </insert>
+    <delete id="delete" parameterType="Integer">
+        DELETE FROM NOTICE WHERE notice_code=#{notice_code}
+    </delete>
+    <update id="update" parameterType="Notice">
+        UPDATE NOTICE SET title=#{title}, posting=#{posting} WHERE notice_code=#{notice_code}
+    </update>
+    <select id="select" parameterType="Integer" resultType="Notice">
+        SELECT * FROM NOTICE WHERE notice_code=#{notice_code}
+    </select>
+    <select id="selectAll" resultType="Notice">
+        SELECT * FROM NOTICE;
+    </select>
+
+</mapper>

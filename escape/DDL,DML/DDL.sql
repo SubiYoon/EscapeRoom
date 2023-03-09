@@ -1,21 +1,23 @@
 USE escapedb;
 
+
 DROP TABLE IF EXISTS WISHLIST;
-DROP TABLE IF EXISTS REVIEW;
 DROP TABLE IF EXISTS IMAGES;
+DROP TABLE IF EXISTS REVIEW;
 DROP TABLE IF EXISTS `MEMBER`;
 DROP TABLE IF EXISTS TEAM;
+DROP TABLE IF EXISTS `COMMENT`;
 DROP TABLE IF EXISTS WANTED;
-DROP TABLE IF EXISTS THEME;
-DROP TABLE IF EXISTS STORE;
-DROP TABLE IF EXISTS `ADMIN`;
-DROP TABLE IF EXISTS `USER`;
 DROP TABLE IF EXISTS QnA;
-DROP TABLE IF EXISTS GENRE;
 DROP TABLE IF EXISTS SWAP;
 DROP TABLE IF EXISTS PAYMENT;
 DROP TABLE IF EXISTS RESERVATION;
-DROP TABLE IF EXISTS `COMMENT`;
+DROP TABLE IF EXISTS `USER`;
+DROP TABLE IF EXISTS THEME;
+DROP TABLE IF EXISTS GENRE;
+DROP TABLE IF EXISTS STORE;
+DROP TABLE IF EXISTS `ADMIN`;
+
 
 
 CREATE TABLE GENRE (
@@ -33,7 +35,6 @@ INSERT INTO GENRE VALUES(NULL, '공포');
 INSERT INTO GENRE VALUES(NULL, '19금');
 INSERT INTO GENRE VALUES(NULL, '야외');
 INSERT INTO GENRE VALUES(NULL, '?');
-SELECT * FROM GENRE;
 
 
 CREATE TABLE `USER` (
@@ -59,7 +60,6 @@ insert into user values(NULL,'user1','qlalfqjsgh1!','dsfjldsjf1@naver.com','010-
 insert into user values(NULL,'user2','qlalfqjsgh2!','erjkwe12@naver.com','010-3434-3434','서울시 강남구',0,'1997-04-20',4,5,1,'2023-03-07');
 insert into user values(NULL,'dasom1','qkrgkektha1!','moa8417@naver.com','010-7644-8407','경주시 황성동',0,'1991-08-16',1,2,3,'2023-03-06');
 insert into user values(NULL,'mint','wkdeotn1!','mint1@gmail.com','010-4325-3421','포항시 양덕동',0,'2013-05-12',6,3,4,'2023-03-08');
-select * from `USER`;
 
 
 CREATE TABLE `ADMIN` (
@@ -73,7 +73,6 @@ ALTER TABLE `ADMIN` ADD CONSTRAINT PRIMARY KEY(admin_code);
 ALTER TABLE `ADMIN` MODIFY admin_code INT AUTO_INCREMENT;
 insert into admin values(1,'admin01','pwdpwd1','010-3333-3333','djfs@naver.com');
 insert into admin values(2,'admin02','pwdpwd2','010-3344-3443','djfdkljf@gmail.com');
-select*from `ADMIN`;
 
 
 CREATE TABLE STORE (
@@ -82,14 +81,14 @@ CREATE TABLE STORE (
 	sname	VARCHAR(100)	NOT NULL,
 	phone	VARCHAR(30)	NOT NULL,
 	address	VARCHAR(100)	NOT NULL,
-	homepage	VARCHAR(100)	NOT NULL
+	homepage	VARCHAR(100)	NOT NULL,
+	event VARCHAR(100) NULL
 );
 ALTER TABLE STORE ADD CONSTRAINT PRIMARY KEY(store_code);
 ALTER TABLE STORE MODIFY store_code INT AUTO_INCREMENT;
 ALTER TABLE STORE ADD FOREIGN KEY (admin_code) REFERENCES `ADMIN` (admin_code);
-INSERT INTO STORE VALUES(NULL, 1, '비밀의화원 리버타운점', '02-763-3289', '서울 종로구 대명길 9 (명륜4가) 지하2층 방탈출', 'http://www.secretgardenescape.com');
-INSERT INTO STORE VALUES(NULL, 2, '제로월드 강남점', '02-599-1661', '서울특별시 서초구 서초대로73길 40.(서초동, 강남오피스텔) 지하1층', 'https://www.zerogangnam.com');
-SELECT * FROM STORE;
+INSERT INTO STORE VALUES(NULL, 1, '비밀의화원 리버타운점', '02-763-3289', '서울 종로구 대명길 9 (명륜4가) 지하2층 방탈출', 'http://www.secretgardenescape.com', NULL);
+INSERT INTO STORE VALUES(NULL, 2, '제로월드 강남점', '02-599-1661', '서울특별시 서초구 서초대로73길 40.(서초동, 강남오피스텔) 지하1층', 'https://www.zerogangnam.com', NULL);
 
 
 CREATE TABLE THEME (
@@ -116,7 +115,6 @@ INSERT INTO THEME VALUES(NULL, 1, 4, '스토커', 60, '#스릴러맨스 #평생_
 INSERT INTO THEME VALUES(NULL, 2, 2, '헐!', 90, '뭐지? 끼이이익----! 처음 듣는 날카로운 소리와 함께 내 몸은 하늘로 붕 뜬다...', 2, 4, '높음', '보통'); -- 모험에 코미디가 포함됨
 INSERT INTO THEME VALUES(NULL, 2, 5, '나비효과', 75, '다시 그 때로 돌아갈 수만 있다면 얼마나 좋을까..?', 4, 3, '보통', '낮음');
 INSERT INTO THEME VALUES(NULL, 2, 6, '제로', 120, '강남 제로월드의 10번째 테마 [제로] 입니다. 마지막까지 저희와 함께 해 주시겠습니까?', 3, 4, '보통', '보통');
-SELECT * FROM THEME;
 
 
 CREATE TABLE WISHLIST (
@@ -150,7 +148,6 @@ ALTER TABLE REVIEW MODIFY review_code INT AUTO_INCREMENT;
 ALTER TABLE REVIEW ADD FOREIGN KEY (user_code) REFERENCES `USER` (user_code);
 ALTER TABLE REVIEW ADD FOREIGN KEY (theme_code) REFERENCES THEME (theme_code);
 INSERT INTO REVIEW VALUES(NULL, 2, 1, "너무 재밌었어요", "추천합니다!", 5, 5, 5, now(), 1, 3, 45, now());
-SELECT * FROM REVIEW;
 
 
 CREATE TABLE IMAGES (
@@ -182,7 +179,6 @@ ALTER TABLE WANTED MODIFY wanted_code INT AUTO_INCREMENT;
 ALTER TABLE WANTED ADD FOREIGN KEY (user_code) REFERENCES `USER` (user_code);
 ALTER TABLE WANTED ADD FOREIGN KEY (theme_code) REFERENCES THEME (theme_code);
 INSERT INTO WANTED VALUES(0, 1, 1, "방탈출 멤버 구합니다", "공포테마 방탈출 3명 구해요!", now(), now(), 60);
-SELECT * FROM WANTED;
 
 
 CREATE TABLE `COMMENT` (
@@ -201,7 +197,6 @@ ALTER TABLE `COMMENT` ADD FOREIGN KEY (wanted_code) REFERENCES WANTED (wanted_co
 INSERT INTO `COMMENT` VALUES(NULL, NULL, 1, 1, "안녕하세요! 사람 아직 구하시나요?", now());
 INSERT INTO `COMMENT` VALUES(NULL, NULL, 2, 1, "저 하고 싶어요!!", now());
 INSERT INTO `COMMENT` VALUES(NULL, 2, 3, 1, "저도요!", now());
-SELECT * FROM `COMMENT`;
 
 
 CREATE TABLE TEAM (
@@ -237,7 +232,6 @@ ALTER TABLE QnA MODIFY qna_code INT AUTO_INCREMENT;
 ALTER TABLE QnA ADD FOREIGN KEY (user_code) REFERENCES `USER` (user_code);
 ALTER TABLE QnA ADD FOREIGN KEY (store_code) REFERENCES STORE (store_code);
 INSERT INTO QnA VALUES(NULL, 2, 1, "QnA질문", "QnA내용", now());
-SELECT * FROM QnA;
 
 
 CREATE TABLE SWAP (
@@ -252,7 +246,6 @@ ALTER TABLE SWAP MODIFY swap_code INT AUTO_INCREMENT;
 ALTER TABLE SWAP ADD FOREIGN KEY (user_code) REFERENCES `USER` (user_code);
 ALTER TABLE SWAP ADD FOREIGN KEY (theme_code) REFERENCES THEME (theme_code);
 INSERT INTO SWAP VALUES(NULL, 2, 1, now(), 60);
-SELECT * FROM SWAP;
 
 
 CREATE TABLE RESERVATION (

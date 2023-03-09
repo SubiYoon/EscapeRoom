@@ -15,6 +15,7 @@ DROP TABLE IF EXISTS RESERVATION;
 DROP TABLE IF EXISTS `USER`;
 DROP TABLE IF EXISTS THEME;
 DROP TABLE IF EXISTS GENRE;
+DROP TABLE IF EXISTS NOTICE;
 DROP TABLE IF EXISTS STORE;
 DROP TABLE IF EXISTS `ADMIN`;
 
@@ -42,6 +43,7 @@ CREATE TABLE `USER` (
 	id	VARCHAR(100)	NOT NULL,
 	upassword	VARCHAR(100)	NULL,
 	email	VARCHAR(100)	NOT NULL,
+	name VARCHAR(30) NULL,
 	phone	VARCHAR(100)	NOT NULL,
 	address	VARCHAR(200)	NOT NULL,
 	ban	VARCHAR(1)	NOT NULL,
@@ -56,10 +58,10 @@ ALTER TABLE `USER` MODIFY user_code INT AUTO_INCREMENT;
 ALTER TABLE `USER` ADD FOREIGN KEY (favorite_genre1) REFERENCES GENRE (genre_code);
 ALTER TABLE `USER` ADD FOREIGN KEY (favorite_genre2) REFERENCES GENRE (genre_code);
 ALTER TABLE `USER` ADD FOREIGN KEY (favorite_genre3) REFERENCES GENRE (genre_code);
-insert into user values(NULL,'user1','qlalfqjsgh1!','dsfjldsjf1@naver.com','010-8473-3343','서울시 성동구',0,'1995-08-16',1,2,3,'2023-03-06');
-insert into user values(NULL,'user2','qlalfqjsgh2!','erjkwe12@naver.com','010-3434-3434','서울시 강남구',0,'1997-04-20',4,5,1,'2023-03-07');
-insert into user values(NULL,'dasom1','qkrgkektha1!','moa8417@naver.com','010-7644-8407','경주시 황성동',0,'1991-08-16',1,2,3,'2023-03-06');
-insert into user values(NULL,'mint','wkdeotn1!','mint1@gmail.com','010-4325-3421','포항시 양덕동',0,'2013-05-12',6,3,4,'2023-03-08');
+insert into user values(NULL,'user1','qlalfqjsgh1!','dsfjldsjf1@naver.com', '김은지', '010-8473-3343','서울시 성동구',0,'1995-08-16',1,2,3,'2023-03-06');
+insert into user values(NULL,'user2','qlalfqjsgh2!','erjkwe12@naver.com','이지희', '010-3434-3434','서울시 강남구',0,'1997-04-20',4,5,1,'2023-03-07');
+insert into user values(NULL,'dasom1','qkrgkektha1!','moa8417@naver.com', '박규민', '010-7644-8407','경주시 황성동',0,'1991-08-16',1,2,3,'2023-03-06');
+insert into user values(NULL,'mint','wkdeotn1!','mint1@gmail.com', '최현우','010-4325-3421','포항시 양덕동',0,'2013-05-12',6,3,4,'2023-03-08');
 
 
 CREATE TABLE `ADMIN` (
@@ -282,4 +284,3 @@ ALTER TABLE NOTICE ADD CONSTRAINT PRIMARY KEY(notice_code);
 ALTER TABLE NOTICE MODIFY notice_code INT AUTO_INCREMENT;
 ALTER TABLE NOTICE ADD FOREIGN KEY (store_code) REFERENCES STORE (store_code);
 INSERT INTO NOTICE VALUES(NULL, 1, "공지사항 질문", "공지사항 내용", now());
-SELECT * FROM NOTICE;
